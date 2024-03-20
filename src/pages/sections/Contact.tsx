@@ -94,7 +94,7 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section " style={{marginTop:'-60px'}}>
       <div className="section-wrapper block">
         <div className="content-1300">
           <div className="row">

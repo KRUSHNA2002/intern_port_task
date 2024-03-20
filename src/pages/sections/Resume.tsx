@@ -1,24 +1,26 @@
 // Images
 import signature from '../../assets/images/signature2.png';
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 // Data
 import resumeData from '../../data/resume.json';
 import { markdownToHTML } from '../../utils/converter';
 
-// -------------
+interface Experience {
+  bulletPoints: string;
+  startDate: string;
+  endDate: string;
+}
 
 function Resume() {
-
-  const [data, setData] = useState([]);
-  const [error, setError] = useState([]);
+  const [data, setData] = useState<Experience[]>([]);
+  const [error, setError] = useState<Error | null>(null);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://portfolio-backend-30mp.onrender.com/api/v1/get/user/65b3a22c01d900e96c4219ae');
         setData(response.data.user.timeline);
-        // console.log(response.data.user.timeline);
       } catch (error) {
         // setError(error);
       }
@@ -28,15 +30,12 @@ function Resume() {
   }, []);
 
   if (error) {
-    // return <div>Error: {error}</div>;
+    return <div>Error: {error.message}</div>;
   }
 
   if (!data) {
-    // return <div>Loading...</div>;
+    return <div>Loading...</div>;
   }
-
-  const startDateString = "2023-11-13T00:00:00.000Z";
-  const startDate = new Date(startDateString);
 
   return (
     <section id="resume" className="section">
@@ -53,7 +52,7 @@ function Resume() {
                   <li key={'exp-' + i} className="timeline-event">
                     <div
                       className="timeline-event-content"
-                     >{exp.bulletPoints}</div>
+                    >{exp.bulletPoints}</div>
                     <div className="timeline-event-date">{new Date(exp.startDate).getFullYear()}-{new Date(exp.endDate).getFullYear()}</div>
                   </li>
                 ))}

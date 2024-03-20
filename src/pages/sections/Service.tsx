@@ -1,23 +1,22 @@
-// Images
-import servImg1 from '../../assets/images/services/service1.png';
-import servImg2 from '../../assets/images/services/service2.png';
-import servImg3 from '../../assets/images/services/service3.png';
-import servImg4 from '../../assets/images/services/service4.png';
-import servImg5 from '../../assets/images/services/service4.png';
 
-// Data
-import serviceData from '../../data/service.json';
 
 import axios from 'axios';
-import React , {useEffect , useState} from 'react';
-
-// -----------------------
+import React, { useEffect, useState } from 'react';
+import serviceData from '../../data/service.json';
+interface ServiceData {
+  name: string;
+  desc: string;
+  charge: string;
+  className?: string; // Assuming className is optional
+  image: {
+    url: string;
+  };
+  imageAltText: string;
+}
 
 function Service() {
-  const images: string[] = [servImg1, servImg2, servImg3, servImg4, servImg5];
-
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState<ServiceData[]>([]);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,6 +30,15 @@ function Service() {
 
     fetchData();
   }, []);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data || data.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section id="service" className="section">
       <div className="section-wrapper block">
@@ -39,10 +47,9 @@ function Service() {
             <div className="one-half width-55">
               <div className="services-wrapper">
                 {data.map((serv, i) => (
-                  <div key={'serv-' + i} className={serv.className!}>
+                  <div key={'serv-' + i} className={serv.className || ''}>
                      <div className="row">
                        <div className="col-md-4">
-
                            <div className='mt-2'>
                               <img  className='mt-4 p-0' src={serv.image.url} alt={serv.imageAltText} style={{width:"200px",height:"200px"}} />
                             </div>
