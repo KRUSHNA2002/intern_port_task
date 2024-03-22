@@ -42,12 +42,19 @@ function Service() {
   return (
     <section id="service" className="section">
       <div className="section-wrapper block">
-        <div className="content-1300">
-          <div className="row">
-            <div className="one-half width-55">
-              <div className="services-wrapper">
-                {data.map((serv, i) => (
-                  <div key={'serv-' + i} className={serv.className || ''}>
+
+        <div className="col-md-12 text-center">
+          <h1 className='text-center'>services</h1>
+          <a className="button mt-2">Download CV</a>
+                <a href="#portfolio" className="button mt-2 ms-2">
+                  Check My Portfolio
+                </a>
+        </div>
+        <div className="content-1300 ">
+                <div className="row  mt-3 ">
+                  {data.map((serv, i) => (
+                   <div className="col-md-6 d-flex justify-content-center">
+                     <div key={'serv-' + i} className={serv.className || ''}>
                      <div className="row">
                        <div className="col-md-4">
                            <div className='mt-2'>
@@ -60,26 +67,10 @@ function Service() {
                               <h3>{serv.charge}</h3>
                        </div>
                      </div>
-                  </div>
+                    </div>
+                   </div>
                 ))}
-              </div>
             </div>
-
-            <div className="one-half width-40 last">
-              <h2 className="entry-title section-title text-center">{serviceData.title}</h2>
-              <p className="section-info hidden">{serviceData.description}</p>
-              {serviceData.paragraphes.map((parg, i) => (
-                <p key={'p-' + i}>{parg}</p>
-              ))}
-
-              <div className="button-group-wrapper d-flex justify-content-center row ">
-                <a className="button mt-2">Download CV</a>
-                <a href="#portfolio" className="button mt-2">
-                  Check My Portfolio
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -85,11 +85,9 @@ function Portfolio() {
 
   return (
     <section id="portfolio" className="section">
-      <div className='row'>
          <div className="col-md-12">
             <h1 className='text-center'>Projects</h1>
          </div>
-      </div>
       <div className="section-wrapper block">
         <div className="content-1300">
           <div id="portfolio-wrapper" className="relative">

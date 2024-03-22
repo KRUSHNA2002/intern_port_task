@@ -46,8 +46,8 @@ function Home() {
   }
 
   return (
-    <section id="home" className="section full-width-section ">
-      <div className="section-wrapper block">
+    <section id="home" className="section full-width-section " style={{paddingRight:"0px "}}>
+      <div className="section-wrapper block" >
         <div className="home-left-part">
           <p className="site-des">{data2.quote}</p>
           <h1 className="entry-title">{data2.name}</h1>
