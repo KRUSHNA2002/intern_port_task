@@ -46,11 +46,11 @@ function App() {
   return (
     <div className="App ">
       <div className="container-fluid p-0 ">
-        <div className="row ">
+        {/* <div className="row "> */}
           <div className='col-md-3'>
               <Navbar isLanding={false}/>
           </div>
-          <div className='col-md-9' style={{paddingRight:"0px"}}>
+          <div className='col-md-9 float-end' style={{paddingRight:"0px"}}>
           <Layout>
               <RouterProvider router={router} />
               <Home/>
@@ -61,7 +61,7 @@ function App() {
               <Contact/>
           </Layout>
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );
