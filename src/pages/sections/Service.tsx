@@ -57,14 +57,14 @@ function Service() {
                      <div key={'serv-' + i} className={serv.className || ''}>
                      <div className="row">
                        <div className="col-md-4">
-                           <div className='mt-2'>
-                              <img  className='mt-4 p-0' src={serv.image.url} alt={serv.imageAltText} style={{width:"200px",height:"200px"}} />
+                           <div className='mt-2 d-flex justify-content-center'>
+                              <img  className='mt-4 p-0 ' src={serv.image.url} alt={serv.imageAltText} style={{width:"200px",height:"200px"}} />
                             </div>
                         </div>
                        <div className="col-md-8 p-2 ">
-                              <h4 className="service-title ">{serv.name}</h4>
-                              <div className="service-text  ">{serv.desc}</div>
-                              <h3>{serv.charge}</h3>
+                              <h4 className="service-title text-center ">{serv.name}</h4>
+                              <div className="service-text text-center ">{serv.desc}</div>
+                              <h3 className='text-center'>{serv.charge}</h3>
                        </div>
                      </div>
                     </div>
